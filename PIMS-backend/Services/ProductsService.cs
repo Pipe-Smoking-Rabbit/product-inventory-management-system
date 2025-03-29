@@ -20,5 +20,10 @@ namespace PIMS_backend.Services
             _productsModel.AddProduct(newProduct);      
             return newProduct;                  
         }
+        public Product? UpdateProduct(int id, Product newProduct)
+        {
+            var updatedProduct = _productsModel.UpdateProduct(id, newProduct);
+            return updatedProduct;
+        }
     }
 }

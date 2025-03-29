@@ -19,5 +19,17 @@ namespace PIMS_backend.Models
             _db.Products.Add(newProduct);  
             _db.SaveChanges();                            
         }
+        public Product? UpdateProduct(int id, Product newProduct)
+        {
+            var existingProduct = _db.Products.Find(id);
+            if (existingProduct != null)
+            {
+                existingProduct.ProductName = newProduct.ProductName;
+                existingProduct.Price = newProduct.Price;
+                existingProduct.Quantity = newProduct.Quantity;
+            }
+            _db.SaveChanges();
+            return existingProduct;
+        }
     }
 }
