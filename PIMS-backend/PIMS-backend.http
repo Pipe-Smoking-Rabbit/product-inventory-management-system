@@ -1,0 +1,6 @@
+@PIMS_backend_HostAddress = http://localhost:5062
+
+GET {{PIMS_backend_HostAddress}}/product-inventory-management/
+Accept: application/json
+
+###
