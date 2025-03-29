@@ -17,7 +17,7 @@ string connectionString = builder.Configuration.GetConnectionString("DefaultConn
 // Add database context, configured to use SQL Server
 builder.Services.AddDbContext<ProductInventoryManagementDbContext>(options => options.UseSqlServer(connectionString));
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+// Add Swagger Docs for API
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

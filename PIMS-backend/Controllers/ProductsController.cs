@@ -56,5 +56,20 @@ namespace PIMS_backend.Controllers
 
             return Ok(updatedProduct);
         }
+
+        // DELETE an existing product
+        [HttpDelete("{id}")]
+        public IActionResult DeleteProduct(int id)
+        {
+            var isProductRemoved = _productService.RemoveProduct(id);
+
+            // Handle 404: Product doesn't exist
+            if (!isProductRemoved)
+            {
+                return NotFound($"Product with ID {id} not found.");
+            }
+
+            return NoContent();
+        }
     }
 }

@@ -25,5 +25,10 @@ namespace PIMS_backend.Services
             var updatedProduct = _productsModel.UpdateProduct(id, newProduct);
             return updatedProduct;
         }
+        public bool RemoveProduct(int id)
+        {
+            var isProductRemoved = _productsModel.RemoveProduct(id);
+            return isProductRemoved;
+        }
     }
 }

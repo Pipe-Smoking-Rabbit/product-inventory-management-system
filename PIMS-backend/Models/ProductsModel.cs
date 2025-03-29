@@ -31,5 +31,20 @@ namespace PIMS_backend.Models
             _db.SaveChanges();
             return existingProduct;
         }
+        public bool RemoveProduct(int id)
+        {
+            var product = _db.Products.Find(id);
+
+            // return false if no product found 
+            if (product == null)
+            {
+                return false;
+            }
+
+            // remove product and return true
+            _db.Products.Remove(product);
+            _db.SaveChanges();
+            return true;
+        }
     }
 }
