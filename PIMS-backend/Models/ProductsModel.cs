@@ -14,5 +14,10 @@ namespace PIMS_backend.Models
         {
             return _db.Products.ToList();
         }
+        public void AddProduct(Product newProduct)
+        {
+            _db.Products.Add(newProduct);  
+            _db.SaveChanges();                            
+        }
     }
 }

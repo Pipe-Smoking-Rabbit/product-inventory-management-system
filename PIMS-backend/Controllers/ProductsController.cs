@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using PIMS_backend.Services;
+using PIMS_backend.Tables;
 
 namespace PIMS_backend.Controllers
 {
@@ -14,12 +15,20 @@ namespace PIMS_backend.Controllers
             _productService = productService;
         }
 
-        // Creating an action Method
+        // GET all Products
         [HttpGet]
         public IActionResult GetProducts()
         {
             var products = _productService.GetProducts();
             return Ok(products);
+        }
+
+        // POST a new Product
+        [HttpPost]
+        public IActionResult CreateProduct([FromBody] Product newProduct)
+        {
+            var createdProduct = _productService.CreateProduct(newProduct);
+            return CreatedAtAction(nameof(GetProducts), new { id = createdProduct.Id }, createdProduct);
         }
     }
 }
