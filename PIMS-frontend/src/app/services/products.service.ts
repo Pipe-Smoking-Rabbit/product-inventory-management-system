@@ -3,12 +3,18 @@ import { inject, Injectable } from '@angular/core';
 import { Product } from '../model/product.type';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductsService {
   http = inject(HttpClient);
-  getProducts () {
-    const url = `https://localhost:7057/Products`
+  baseURL = `https://localhost:7057`;
+
+  getProducts() {
+    const url = this.baseURL + `/Products`;
     return this.http.get<Array<Product>>(url);
+  }
+  editProduct(product: Product) {
+    const url = this.baseURL + `/Products/${product.id}`;
+    return this.http.put(url, product);
   }
 }

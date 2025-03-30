@@ -1,0 +1,13 @@
+.product-details {
+  display: flex;
+  flex-direction: row; /* Row layout */
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 18px;
+  padding-block: 4px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-block: 6px;
+}
+/* TODO convert this to a grid with fifths */

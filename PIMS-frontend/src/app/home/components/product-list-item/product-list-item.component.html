@@ -1,1 +1,17 @@
-<p>{{ product().productName }} - In Stock: {{product().quantity}} - £{{product().price}}</p>
+<div class="product-details">
+  <h4>{{ product().productName }}</h4>
+  <p>{{ product().quantity }} in Stock</p>
+  <p>£{{ product().price }}</p>
+
+  <app-cta-button
+    [routerLink]="['/update']"
+    [queryParams]="{
+      id: product().id,
+      productName: product().productName,
+      quantity: product().quantity,
+      price: product().price
+    }"
+    [type]="'edit'"
+  />
+  <app-cta-button [type]="'delete'" />
+</div>
