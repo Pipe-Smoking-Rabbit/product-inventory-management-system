@@ -5,6 +5,19 @@ using PIMS_backend.DbContexts;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add CORS
+var AllowSpecificOrigins = "_allowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: AllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200") 
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
 // Add Controller layer
 builder.Services.AddControllers();
 builder.Services.AddScoped<ProductsService>();
@@ -33,6 +46,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseRouting();
+
+app.UseCors(AllowSpecificOrigins);
 
 app.UseAuthorization();
 
