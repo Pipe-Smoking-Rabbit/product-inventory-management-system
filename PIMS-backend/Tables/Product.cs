@@ -10,7 +10,7 @@ namespace PIMS_backend.Tables
 
         [Required]
         [StringLength(100)]
-        public string ProductName { get; set; }
+        public required string ProductName { get; set; }
 
         
         public decimal Price { get; set; }
