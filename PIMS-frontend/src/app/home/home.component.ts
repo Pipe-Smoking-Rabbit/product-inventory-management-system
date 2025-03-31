@@ -2,11 +2,12 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { ProductsService } from '../services/products.service';
 import { Product } from '../model/product.type';
 import { ProductListComponent } from './components/product-list/product-list.component';
-import { concatMap, last } from 'rxjs';
+import { CtaButtonComponent } from '../components/cta-button/cta-button.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [ProductListComponent],
+  imports: [ProductListComponent, CtaButtonComponent, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

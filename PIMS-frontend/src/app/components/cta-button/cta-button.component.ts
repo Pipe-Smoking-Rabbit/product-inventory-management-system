@@ -1,6 +1,6 @@
 import { Component, input, output } from '@angular/core';
 
-type CtaButtonType = 'edit' | 'delete';
+type CtaButtonType = 'edit' | 'delete' | 'add';
 
 @Component({
   selector: 'app-cta-button',

@@ -51,8 +51,14 @@ export class ProductFormComponent implements OnInit {
       quantity: Number(formData.quantity),
       price: Number(formData.price),
     };
-    this.productService.editProduct(updatedProduct).subscribe((product) => {
-      this.router.navigate(["/"])
+
+    // if id is present in query then edit product, otherwise create new product
+    const httpCall = this.id()
+      ? this.productService.editProduct(updatedProduct)
+      : this.productService.postProduct(updatedProduct);
+
+    httpCall.subscribe(() => {
+      this.router.navigate(['/']);
     });
   }
 }

@@ -21,4 +21,8 @@ export class ProductsService {
     const url = this.baseURL + `/Products/${id}`;
     return this.http.delete(url);
   }
+  postProduct(product: Product) {
+    const url = this.baseURL + `/Products`;
+    return this.http.post(url, product);
+  }
 }

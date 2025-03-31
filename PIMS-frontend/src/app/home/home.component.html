@@ -1,2 +1,12 @@
-<h2>Current Inventory</h2>
-<app-product-list [products]="products()" (forwardDeleteId)="handleRemoveProduct($event)"/>
+<div class="list-header">
+  <h2>Current Inventory</h2>
+  <app-cta-button
+    [type]="'add'"
+    [buttonText]="'Add Product'"
+    [routerLink]="['/update']"
+  />
+</div>
+<app-product-list
+  [products]="products()"
+  (forwardDeleteId)="handleRemoveProduct($event)"
+/>
