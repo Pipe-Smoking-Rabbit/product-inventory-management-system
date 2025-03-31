@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace PIMS_backend.Tables
+namespace PIMS_backend.Entities
 {
     
     public class Product

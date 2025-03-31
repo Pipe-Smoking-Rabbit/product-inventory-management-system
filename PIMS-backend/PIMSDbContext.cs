@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PIMS_backend.Tables;
+using PIMS_backend.Entities;
 
-namespace PIMS_backend.DbContexts
+namespace PIMS_backend
 {
     public class ProductInventoryManagementDbContext : DbContext
     {
@@ -9,11 +9,6 @@ namespace PIMS_backend.DbContexts
         public DbSet<Product> Products { get; set; }
 
         // Provide required database connection options
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Server=localhost\\SQLEXPRESS;Database=product_inventory_management;User Id=mitchell;Password=password;TrustServerCertificate=True;");
-        }
-
         public ProductInventoryManagementDbContext(DbContextOptions<ProductInventoryManagementDbContext> options)
             : base(options) { }
 

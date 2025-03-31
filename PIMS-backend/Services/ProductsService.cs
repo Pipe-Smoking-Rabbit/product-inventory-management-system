@@ -1,8 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PIMS_backend.Models;
-using PIMS_backend.Tables;
+﻿using PIMS_backend.Entities;
 
-namespace PIMS_backend.Services
+
+namespace PIMS_backend
 {
     public class ProductsService
     {

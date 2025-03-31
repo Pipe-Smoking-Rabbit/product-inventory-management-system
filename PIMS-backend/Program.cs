@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using PIMS_backend.Services;
-using PIMS_backend.Models;
-using PIMS_backend.DbContexts;
+using PIMS_backend;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,12 +21,8 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<ProductsService>();
 builder.Services.AddScoped<ProductsModel>();
 
-
-// Get the connection string from appsettings.json
-string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
 // Add database context, configured to use SQL Server
-builder.Services.AddDbContext<ProductInventoryManagementDbContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<ProductInventoryManagementDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add Swagger Docs for API
 builder.Services.AddEndpointsApiExplorer();

@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using PIMS_backend.Services;
-using PIMS_backend.Tables;
+using PIMS_backend.Entities;
 
-namespace PIMS_backend.Controllers
+
+
+namespace PIMS_backend
 {
     [ApiController]
     [Route("/[controller]")]

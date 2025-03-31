@@ -1,7 +1,6 @@
-﻿using PIMS_backend.DbContexts;
-using PIMS_backend.Tables;
+﻿using PIMS_backend.Entities;
 
-namespace PIMS_backend.Models
+namespace PIMS_backend
 {
     public class ProductsModel
     {
