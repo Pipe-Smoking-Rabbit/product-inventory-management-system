@@ -30,6 +30,7 @@ export class ProductFormComponent implements OnInit {
   });
 
   submitted = false;
+  loading = false;
 
   constructor(private route: ActivatedRoute, private router: Router) {}
 
@@ -70,7 +71,9 @@ export class ProductFormComponent implements OnInit {
       ? this.productService.editProduct(updatedProduct)
       : this.productService.postProduct(updatedProduct);
 
+    this.loading = true;
     httpCall.subscribe(() => {
+      this.loading = false;
       this.router.navigate(['/']);
     });
   }

@@ -1,4 +1,4 @@
-<div class="product-details">
+<li class="product-details">
   <h4>{{ product().productName }}</h4>
   <p>x {{ product().quantity }}</p>
   <p>£{{ product().price }}</p>
@@ -13,6 +13,10 @@
       }"
       [buttonText]="'Edit'"
     />
-    <app-cta-button [type]="'delete'" [buttonText]="'Delete'" (buttonClick)="deleteProduct(product().id)" />
+    <app-cta-button
+      [type]="'delete'"
+      [buttonText]="'Delete'"
+      (buttonClick)="deleteProduct(product().id)"
+    />
   </div>
-</div>
+</li>

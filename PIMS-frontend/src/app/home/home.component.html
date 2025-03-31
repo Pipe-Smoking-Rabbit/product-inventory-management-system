@@ -6,7 +6,11 @@
     [routerLink]="['/update']"
   />
 </div>
+@if (loading) {
+<app-loading-list />
+} @else {
 <app-product-list
   [products]="products()"
   (forwardDeleteId)="handleRemoveProduct($event)"
 />
+}
