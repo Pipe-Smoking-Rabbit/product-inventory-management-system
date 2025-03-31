@@ -6,19 +6,19 @@ button {
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .edit {
-  background-color: #007bff;
+  background-color: #4b6f96;
 }
 
 .edit:hover {
-  background-color: #0056b3;
+  background-color: #074689;
 }
 
 .delete {
-  background-color: #dc3545;
+  background-color: #964149;
 }
 
 .delete:hover {
@@ -26,14 +26,17 @@ button {
 }
 
 .add {
-  background-color: #28a745; /* Green background */
+  background-color: #333; 
 }
 
 .add:hover {
-  background-color: #218838; /* Darker green when hovered */
+  color: black;
+  border: 2px solid #333;
+  padding: 8px 14px;
+  background-color: #f9f9f9; 
 }
 
 .add:active {
-  background-color: #1e7e34; /* Even darker green when button is clicked */
-  transform: scale(0.98); /* Slight shrink on click */
+  background-color: #333; 
+  transform: scale(0.98); 
 }

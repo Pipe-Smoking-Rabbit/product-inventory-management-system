@@ -1,5 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import {
+  AbstractControl,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
@@ -8,10 +9,11 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../../../services/products.service';
 import { Product } from '../../../model/product.type';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-product-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.css'],
 })
@@ -19,10 +21,15 @@ export class ProductFormComponent implements OnInit {
   productService = inject(ProductsService);
   id = signal('');
   productForm = new FormGroup({
-    productName: new FormControl('', Validators.required),
-    quantity: new FormControl('', Validators.required),
-    price: new FormControl('', Validators.required),
+    productName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
+    quantity: new FormControl('', [Validators.required, Validators.min(1)]),
+    price: new FormControl('', [Validators.required, Validators.min(0.01)]),
   });
+
+  submitted = false;
 
   constructor(private route: ActivatedRoute, private router: Router) {}
 
@@ -39,6 +46,12 @@ export class ProductFormComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
+    if (this.productForm.invalid) {
+      this.flashInvalidFields();
+      return;
+    }
+
     const formData = this.productForm.value as {
       productName: string;
       quantity: string;
@@ -60,5 +73,21 @@ export class ProductFormComponent implements OnInit {
     httpCall.subscribe(() => {
       this.router.navigate(['/']);
     });
+  }
+
+  flashInvalidFields() {
+    Object.keys(this.productForm.controls).forEach((key) => {
+      const control = this.productForm.get(key) as AbstractControl;
+      if (control.invalid) {
+        const element = document.getElementById(key) as HTMLElement;
+        element.classList.add('flash-error');
+        setTimeout(() => element.classList.remove('flash-error'), 1000);
+      }
+    });
+  }
+
+  isInvalid(formControlName: string): boolean {
+    const control = this.productForm.get(formControlName) as AbstractControl;
+    return control.invalid && (control.touched || this.submitted);
   }
 }

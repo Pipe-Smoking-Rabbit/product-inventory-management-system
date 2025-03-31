@@ -1,8 +1,11 @@
 <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
   <div class="input-container">
     <label for="productName"
-      >Product Name <span class="required-span">*</span></label
-    >
+      >Product Name <span class="required-span">*</span> @if
+      (isInvalid('productName')) {<span class="validation-error"
+        >product name is required and must be at least 3 characters</span
+      >}
+    </label>
     <input
       type="text"
       id="productName"
@@ -14,7 +17,12 @@
   </div>
 
   <div class="input-container">
-    <label for="quantity">Quantity <span class="required-span">*</span></label>
+    <label for="quantity"
+      >Quantity <span class="required-span">*</span> @if (isInvalid('quantity'))
+      {<span class="validation-error"
+        >quantity is required and must be at least 1</span
+      >}
+    </label>
     <input
       type="number"
       id="quantity"
@@ -27,7 +35,12 @@
   </div>
 
   <div class="input-container">
-    <label for="price">Price <span class="required-span">*</span></label>
+    <label for="price"
+      >Price <span class="required-span">*</span> @if (isInvalid('price'))
+      {<span class="validation-error"
+        >price is required and must be at least £0.01</span
+      >}
+    </label>
     <input
       type="number"
       id="price"
@@ -40,5 +53,5 @@
     />
   </div>
 
-  <button type="submit" [disabled]="!productForm.valid">Confirm</button>
+  <button type="submit">Confirm</button>
 </form>
