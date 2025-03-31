@@ -17,4 +17,8 @@ export class ProductsService {
     const url = this.baseURL + `/Products/${product.id}`;
     return this.http.put(url, product);
   }
+  deleteProduct(id: number) {
+    const url = this.baseURL + `/Products/${id}`;
+    return this.http.delete(url);
+  }
 }

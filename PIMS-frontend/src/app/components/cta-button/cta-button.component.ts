@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 type CtaButtonType = 'edit' | 'delete';
 
@@ -10,4 +10,10 @@ type CtaButtonType = 'edit' | 'delete';
 })
 export class CtaButtonComponent {
   type = input<CtaButtonType>('edit');
+  buttonText = input('Click Me');
+  buttonClick = output();
+
+  handleClick() {
+    this.buttonClick.emit();
+  }
 }

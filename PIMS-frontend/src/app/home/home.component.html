@@ -1,2 +1,2 @@
 <h2>Current Inventory</h2>
-<app-product-list [products]="products()"/>
+<app-product-list [products]="products()" (forwardDeleteId)="handleRemoveProduct($event)"/>
