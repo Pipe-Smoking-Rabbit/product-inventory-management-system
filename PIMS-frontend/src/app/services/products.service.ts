@@ -7,7 +7,7 @@ import { Product } from '../model/product.type';
 })
 export class ProductsService {
   http = inject(HttpClient);
-  baseURL = `https://localhost:7057`;
+  baseURL = `http://localhost:5062`;
 
   getProducts() {
     const url = this.baseURL + `/Products`;
