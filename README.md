@@ -52,7 +52,7 @@ cd product-inventory-management-system
   ```
 - Start the Angular development server:
   ```sh
-  ng serve
+  npm start
   ```
 - Open the application in your browser at [**http://localhost:4200**](http://localhost:4200)
 
